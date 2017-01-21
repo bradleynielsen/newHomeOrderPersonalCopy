@@ -1,7 +1,8 @@
 // google-nest-api  NPM package
 var nest = require('nest-thermostat').init('bradleynielsen@gmail.com', '*9Ph^VRrYU!1zZ6');
 
-nest.getInfo('serial number', function(data) {
+// nest.getInfo('serial number', function(data) {
+nest.getInfo('02AA01AC061508AP', function(data) {
 	console.log('Currently ' + celsiusToFahrenheit(data.current_temperature) + ' degrees fahrenheit');
 	console.log('Target is ' + celsiusToFahrenheit(data.target_temperature) + ' degrees fahrenheit');
 });
@@ -14,26 +15,24 @@ function celsiusToFahrenheit(temp) {
 
 
 
+// // unofficial-nest-api NPM package
 
-
-// unofficial-nest-api NPM package
-
-nest.login(username, password, function (err, data) {
-    if (err) {
-        console.log(err.message);
-        process.exit(1);
-        return;
-    }
-    nest.fetchStatus(function (data) {
-        for (var deviceId in data.device) {
-            if (data.device.hasOwnProperty(deviceId)) {
-                var device = data.shared[deviceId];
-                // here's the device and ID
-                nest.setTemperature(deviceId, nest.ftoc(70));
-            }
-        }
-    });
-});
+// nest.login('bradleynielsen@gmail.com', '*9Ph^VRrYU!1zZ6', function (err, data) {
+//     if (err) {
+//         console.log(err.message);
+//         process.exit(1);
+//         return;
+//     }
+//     nest.fetchStatus(function (data) {
+//         for (var deviceId in data.device) {
+//             if (data.device.hasOwnProperty(deviceId)) {
+//                 var device = data.shared[deviceId];
+//                 // here's the device and ID
+//                 nest.setTemperature(deviceId, nest.ftoc(70));
+//             }
+//         }
+//     });
+// });
 
 
 
@@ -53,23 +52,23 @@ nest.login(username, password, function (err, data) {
 //   });
 // });
 
-// Below is an example data structure / JSON object returned from the Nest API:
-// {
-//   user_alert_dialog: { '###':  { /* ... */ } },
-//   track:  { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   message_center: { '###': { /* ... */ } },
-//   utility: { /* ... */ },
-//   where: { '### uuid ###': { /* ... */ },
-//   structure: { '### uuid ###': { /* ... */ },
-//   message: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   tuneups: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   device: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   demand_response: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   user: { '###': { /* ... */ },
-//   link: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   device_alert_dialog: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   metadata: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   user_settings: { '###': { /* ... */ },
-//   schedule: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
-//   shared: { '0123456789ABCDEF': { /* ... */ }, /* ... */ }
-//  }
+// // Below is an example data structure / JSON object returned from the Nest API:
+// // {
+// //   user_alert_dialog: { '###':  { /* ... */ } },
+// //   track:  { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   message_center: { '###': { /* ... */ } },
+// //   utility: { /* ... */ },
+// //   where: { '### uuid ###': { /* ... */ },
+// //   structure: { '### uuid ###': { /* ... */ },
+// //   message: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   tuneups: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   device: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   demand_response: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   user: { '###': { /* ... */ },
+// //   link: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   device_alert_dialog: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   metadata: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   user_settings: { '###': { /* ... */ },
+// //   schedule: { '0123456789ABCDEF': { /* ... */ }, /* ... */ },
+// //   shared: { '0123456789ABCDEF': { /* ... */ }, /* ... */ }
+// //  }
