@@ -9,14 +9,14 @@
  
 "option strict";
 
-var user = 'bradleynielsen@gmail.com';
-var password = '*9Ph^VRrYU!1zZ6';
-var serial_number = '02AA01AC061508AP';
-
+var username        = process.argv[2] || 'bradleynielsen@gmail.com';
+var password        = process.argv[3] || '*9Ph^VRrYU!1zZ6';
+var serial_number   = '02AA01AC061508AP';
+var targetTemp      = 68;
+var mode            = 'heat';
 
 var util = require('util'),
     nest = require('./index.js');  // normally would be 'unofficial-nest-api'
-
 
 function trimQuotes(s) {
     if (!s || s.length === 0) {
@@ -41,17 +41,21 @@ function merge(o1, o2) {
     return o1;
 }
 
-if (process.argv.length < 4) {
-    console.log('Usage: ' + process.argv[1] + ' bradleynielsen@gmail.com *9Ph^VRrYU!1zZ6 []');
-    console.log('');
-    console.log('USERNAME and PASSWORD should be enclosed in quotes.');
-    console.log('');
 
-    process.exit(1); // failure to communicate with user app requirements. :)
-}
+// if (process.argv.length < 4) {
+//     console.log('Usage: ' + process.argv[1] + ' bradleynielsen@gmail.com *9Ph^VRrYU!1zZ6 []');
+//     console.log('');
+//     console.log('USERNAME and PASSWORD should be enclosed in quotes.');
+//     console.log('');
 
-var username = process.argv[2];
-var password = process.argv[3];
+//     process.exit(1); // failure to communicate with user app requirements. :)
+// }
+
+
+
+
+// var username = process.argv[2];
+// var password = process.argv[3];
 
 if (username && password) {
     username = trimQuotes(username);
@@ -74,14 +78,17 @@ if (username && password) {
                 }
             }
             var ids = nest.getDeviceIds();
-            nest.setTemperature(ids[0], 69);
-            nest.setTemperature(69);
+            // nest.setTemperature(ids[0], targetTemp);
+        console.log("Hey!!! The targetTemp= "+targetTemp)
+        console.log("Hey!!! The mode= "+mode)
+            nest.setTemperature(targetTemp);
             //nest.setFanModeAuto();
             //subscribe();
             //nest.setAway();
             //nest.setHome();
-            nest.setTargetTemperatureType(ids[0], 'heat');
+            nest.setTargetTemperatureType(ids[0], mode);
         });
+            
     });
 }
 
