@@ -1,8 +1,18 @@
-// google-nest-api  NPM package
-var nest = require('nest-thermostat').init('bradleynielsen@gmail.com', '*9Ph^VRrYU!1zZ6');
+var nestUser = 'bradleynielsen@gmail.com';
+var nestPassword = '*9Ph^VRrYU!1zZ6';
+var nestSerialNumber = '02AA01AC061508AP';
 
-// nest.getInfo('serial number', function(data) {
-nest.getInfo('02AA01AC061508AP', function(data) {
+
+//=============================//
+// google-nest-api  NPM package//
+//=============================//
+
+
+var nest = require('nest-thermostat').init(nestUser, nestPassword);
+
+// Get the Temps
+nest.getInfo(nestSerialNumber, function(data) {
+	console.log(data);
 	console.log('Currently ' + celsiusToFahrenheit(data.current_temperature) + ' degrees fahrenheit');
 	console.log('Target is ' + celsiusToFahrenheit(data.target_temperature) + ' degrees fahrenheit');
 });
@@ -10,6 +20,16 @@ nest.getInfo('02AA01AC061508AP', function(data) {
 function celsiusToFahrenheit(temp) {
     return Math.round(temp * (9 / 5.0) + 32.0);
 };
+
+// nest.fetchStatus(function (data) {
+//         for (var deviceId in data.device) {
+//             if (data.device.hasOwnProperty(deviceId)) {
+//                 var device = data.shared[deviceId];
+//                 // here's the device and ID
+//                 nest.setTemperature(deviceId, nest.ftoc(70));
+//             }
+//         }
+//     });
 
 
 
