@@ -14,6 +14,8 @@ var password        = process.argv[3] || '*9Ph^VRrYU!1zZ6';
 var serial_number   = '02AA01AC061508AP';
 var targetTemp      = 68;
 var mode            = 'heat';
+// var mode            = 'cool';
+
 
 var util = require('util'),
     nest = require('./index.js');  // normally would be 'unofficial-nest-api'
@@ -78,7 +80,7 @@ if (username && password) {
                 }
             }
             var ids = nest.getDeviceIds();
-            // nest.setTemperature(ids[0], targetTemp);
+            nest.setTemperature(ids[0], targetTemp);
         console.log("Hey!!! The targetTemp= "+targetTemp)
         console.log("Hey!!! The mode= "+mode)
             nest.setTemperature(targetTemp);
