@@ -21,6 +21,7 @@
     "express": "^4.14.0",
     "material-ui": "^0.16.6",
     "nest-api": "0.0.7",
+    "nest-thermostat": "^0.2.1",
     "nest-thermostat-api": "0.0.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

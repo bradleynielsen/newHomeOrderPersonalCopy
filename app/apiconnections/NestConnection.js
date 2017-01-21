@@ -1,13 +1,57 @@
-var NestApi = require('nest-api');
-var nestApi = new NestApi('bradleynielsen@gmail.com', '*9Ph^VRrYU!1zZ6');
+// google-nest-api  NPM package
+var nest = require('nest-thermostat').init('bradleynielsen@gmail.com', '*9Ph^VRrYU!1zZ6');
 
-nestApi.login(function(data) {
-  nestApi.get(function(data) {
-    var shared = data.shared[Object.keys(data.schedule)[0]];
-    console.log('Currently ' + shared.current_temperature + ' degrees celcius');
-    console.log('Target is ' + shared.target_temperature + ' degrees celcius');
-  });
+nest.getInfo('serial number', function(data) {
+	console.log('Currently ' + celsiusToFahrenheit(data.current_temperature) + ' degrees fahrenheit');
+	console.log('Target is ' + celsiusToFahrenheit(data.target_temperature) + ' degrees fahrenheit');
 });
+
+function celsiusToFahrenheit(temp) {
+    return Math.round(temp * (9 / 5.0) + 32.0);
+};
+
+
+
+
+
+
+
+// unofficial-nest-api NPM package
+
+nest.login(username, password, function (err, data) {
+    if (err) {
+        console.log(err.message);
+        process.exit(1);
+        return;
+    }
+    nest.fetchStatus(function (data) {
+        for (var deviceId in data.device) {
+            if (data.device.hasOwnProperty(deviceId)) {
+                var device = data.shared[deviceId];
+                // here's the device and ID
+                nest.setTemperature(deviceId, nest.ftoc(70));
+            }
+        }
+    });
+});
+
+
+
+
+
+
+
+// // nest-api NPM package
+// var NestApi = require('nest-api');
+// var nestApi = new NestApi('bradleynielsen@gmail.com', '*9Ph^VRrYU!1zZ6');
+
+// nestApi.login(function(data) {
+//   nestApi.get(function(data) {
+//     var shared = data.shared[Object.keys(data.schedule)[0]];
+//     console.log('Currently ' + shared.current_temperature + ' degrees celcius');
+//     console.log('Target is ' + shared.target_temperature + ' degrees celcius');
+//   });
+// });
 
 // Below is an example data structure / JSON object returned from the Nest API:
 // {
