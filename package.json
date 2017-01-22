@@ -32,7 +32,8 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
     "redux-promise-middleware": "^4.2.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "unofficial-nest-api": "^0.1.4"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",

@@ -1,18 +1,13 @@
-/**
- *
- *  Demonstration for the unofficial_nest library
- *  logs in, reads status, constantly, for ever. :)
- *
- */
+
  
  //  'bradleynielsen@gmail.com' '*9Ph^VRrYU!1zZ6'
  
 "option strict";
 
-var username        = process.argv[2] || 'bradleynielsen@gmail.com';
-var password        = process.argv[3] || '*9Ph^VRrYU!1zZ6';
+var username        = 'bradleynielsen@gmail.com';
+var password        = '*9Ph^VRrYU!1zZ6';
 var serial_number   = '02AA01AC061508AP';
-var targetTemp      = 68;
+var targetTemp      = process.argv[2];
 var mode            = 'heat';
 // var mode            = 'cool';
 
@@ -44,20 +39,7 @@ function merge(o1, o2) {
 }
 
 
-// if (process.argv.length < 4) {
-//     console.log('Usage: ' + process.argv[1] + ' bradleynielsen@gmail.com *9Ph^VRrYU!1zZ6 []');
-//     console.log('');
-//     console.log('USERNAME and PASSWORD should be enclosed in quotes.');
-//     console.log('');
 
-//     process.exit(1); // failure to communicate with user app requirements. :)
-// }
-
-
-
-
-// var username = process.argv[2];
-// var password = process.argv[3];
 
 if (username && password) {
     username = trimQuotes(username);
