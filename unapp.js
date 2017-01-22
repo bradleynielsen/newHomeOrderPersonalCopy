@@ -1,7 +1,7 @@
 
- 
+
  //  'bradleynielsen@gmail.com' '*9Ph^VRrYU!1zZ6'
- 
+
 "option strict";
 
 var username        = 'bradleynielsen@gmail.com';
@@ -13,7 +13,7 @@ var mode            = 'heat';
 
 
 var util = require('util'),
-    nest = require('./index.js');  // normally would be 'unofficial-nest-api'
+    nest = require('./unindex.js');  // normally would be 'unofficial-nest-api'
 
 function trimQuotes(s) {
     if (!s || s.length === 0) {
@@ -72,7 +72,7 @@ if (username && password) {
             //nest.setHome();
             nest.setTargetTemperatureType(ids[0], mode);
         });
-            
+
     });
 }
 
@@ -91,4 +91,3 @@ function subscribeDone(deviceId, data, type) {
     }
     setTimeout(subscribe, 2000);
 }
-

@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server",
+    "dev": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/bradleynielsen/newhomeorder.git"
   },
-  "author": "Nielsen & Reynolds",
+  "author": "",
   "license": "WTFPL",
   "bugs": {
     "url": "https://github.com/bradleynielsen/newhomeorder/issues"
