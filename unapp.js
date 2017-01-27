@@ -11,9 +11,9 @@ var targetTemp      = process.argv[2];
 var mode            = 'heat';
 // var mode            = 'cool';
 
-
+var nestApi = require('unofficial-nest-api');
 var util = require('util'),
-    nest = require('./unindex.js');  // normally would be 'unofficial-nest-api'
+    nest = require('node_moduels/unofficial-nest-api/unindex.js');  // normally would be 'unofficial-nest-api'
 
 function trimQuotes(s) {
     if (!s || s.length === 0) {
